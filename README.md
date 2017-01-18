@@ -55,7 +55,11 @@ import Providers from 'api/collections/Providers'
 const providers = resolver({
   collection: Providers, // Meteor collection
   allowedSort: ['name', 'totalEarnings'], // fields that can be sorted
-  fields: ['name'] // fields that can be searched
+  fields: ['name'], // fields that can be searched
+  transformQuery (query, root, params, context) {
+    // transform the query here
+    return query
+  }
 })
 
 export default {
