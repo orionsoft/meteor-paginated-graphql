@@ -32,7 +32,7 @@ createApolloServer({schema})
 ### Defining the method
 
 ```js
-import {query} from 'paginated-graphql/lib/schema'
+import query from 'paginated-graphql/lib/query'
 
 const providers = query({
   name: 'providers', // name of the field (method)
@@ -49,11 +49,11 @@ type Query {
 ### Adding the resolver
 
 ```js
-import paginated from 'paginated-graphql/lib/server/resolver'
+import resolver from 'paginated-graphql/lib/resolver'
 import Providers from 'api/collections/Providers'
 
-const providers = paginated({
-  collection: Providers, // collection
+const providers = resolver({
+  collection: Providers, // Meteor collection
   allowedSort: ['name', 'totalEarnings'], // fields that can be sorted
   fields: ['name'] // fields that can be searched
 })

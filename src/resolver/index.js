@@ -42,6 +42,7 @@ export default function ({
       params,
       context,
       query,
+      
       options
     }
   }
