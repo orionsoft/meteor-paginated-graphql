@@ -13,7 +13,7 @@ You need to use [graphql-loader](https://github.com/orionsoft/graphql-loader).
 Once, after importing type definitions and resolvers import this package.
 
 ```js
-import {createApolloServer} from 'meteor/orionsoft:apollo'
+import {createApolloServer} from 'meteor/orionsoft:apollo' // or meteor/apollo
 import {makeExecutableSchema} from 'graphql-tools'
 import {loadSchema, getSchema} from 'graphql-loader'
 import typeDefs from './schema'
