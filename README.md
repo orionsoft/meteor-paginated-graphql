@@ -36,7 +36,8 @@ import query from 'paginated-graphql/lib/query'
 
 const providers = query({
   name: 'providers', // name of the field (method)
-  type: 'Provider' // name of the GraphQL type
+  type: 'Provider', // name of the GraphQL type
+  params: 'filter: String'
 })
 
 export default `
