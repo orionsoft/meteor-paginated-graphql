@@ -68,3 +68,29 @@ export default {
   }
 }
 ```
+
+### Using ```$text``` search
+
+```js
+resolver({
+  collection: Transactions,
+  allowedSort: ['date', 'amount'],
+  fields: 'name',
+  search: true
+})
+
+const transactions = query({
+  name: 'transactions',
+  type: 'Transaction',
+  params: 'filter: String, search: String'
+})
+
+// The collection definition
+
+import setTextIndex from 'paginated-graphql/lib/setTextIndex'
+setTextIndex(Transactions, {
+  name: 45, // weights
+  comment: 5,
+  category: 1
+})
+```

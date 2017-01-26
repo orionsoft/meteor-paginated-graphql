@@ -1,15 +1,15 @@
 {
   "name": "paginated-graphql",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "repository": "http://github.com/orionsoft/paginated-graphql",
   "author": "nicolaslopezj",
   "license": "MIT",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
-    "prepublish": "npm run build",
-    "test": "npm run lint && jest",
-    "watch": "watch npm\\ run\\ build ./src",
+    "prepublish": "yarn run build",
+    "test": "yarn run lint && jest",
+    "watch": "watch yarn\\ run\\ build ./src",
     "test-watch": "jest --watch",
     "lint": "standard \"src/**/*.js\""
   },

@@ -30,13 +30,18 @@ export default function ({
    */
   fields,
   /**
+   * Boolean, use search query instead of fields filters
+   */
+  search,
+  /**
    * A function that returns a new query
    */
   transformQuery
 }) {
   return function (root, params, context) {
-    const options = getOptions({allowedSort, forbiddenSort, defaultSort, defaultSortType}, root, params, context)
-    const query = getQuery({fields, transformQuery}, root, params, context)
+    const options = getOptions({allowedSort, search, forbiddenSort, defaultSort, defaultSortType}, root, params, context)
+    const query = getQuery({fields, search, transformQuery}, root, params, context)
+    console.log('making query', JSON.stringify(query, null, 2), JSON.stringify(options, null, 2))
     return {
       cursor: collection.find(query, options),
       params,
