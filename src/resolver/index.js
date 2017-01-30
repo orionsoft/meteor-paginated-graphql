@@ -36,12 +36,15 @@ export default function ({
   /**
    * A function that returns a new query
    */
-  transformQuery
+  transformQuery,
+  /**
+   * The max limit of the pages
+   */
+  maxLimit
 }) {
   return function (root, params, context) {
-    const options = getOptions({allowedSort, search, forbiddenSort, defaultSort, defaultSortType}, root, params, context)
+    const options = getOptions({allowedSort, search, forbiddenSort, defaultSort, defaultSortType, maxLimit}, root, params, context)
     const query = getQuery({fields, search, transformQuery}, root, params, context)
-    console.log('making query', JSON.stringify(query, null, 2), JSON.stringify(options, null, 2))
     return {
       cursor: collection.find(query, options),
       params,

@@ -1,6 +1,6 @@
 {
   "name": "paginated-graphql",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "lib/index.js",
   "repository": "http://github.com/orionsoft/paginated-graphql",
   "author": "nicolaslopezj",

@@ -1,7 +1,7 @@
 import includes from 'lodash/includes'
 import isObject from 'lodash/isObject'
 
-export default function ({allowedSort, search: canSearch, forbiddenSort, defaultSort, defaultSortType}, root, {search, filter, page, limit, sortBy, sortType}) {
+export default function ({allowedSort, search: canSearch, forbiddenSort, defaultSort, defaultSortType, maxLimit}, root, {search, filter, page, limit, sortBy, sortType}) {
   if (!defaultSort) {
     if (canSearch && search) {
       defaultSort = 'score'
@@ -18,10 +18,12 @@ export default function ({allowedSort, search: canSearch, forbiddenSort, default
       defaultSortType = 'DESC'
     }
   }
-  if (!limit) limit = 20
-  if (limit > 200) {
-    throw new Error('Max limit is 200')
+
+  if (typeof limit === 'undefined') limit = 20
+  if (maxLimit && (limit > maxLimit || limit === 0)) {
+    throw new Error(`Max limit is ${maxLimit}`)
   }
+  limit = limit === 0 ? undefined : limit
 
   if (typeof page === 'undefined') page = 1
   if (!sortBy) sortBy = defaultSort
